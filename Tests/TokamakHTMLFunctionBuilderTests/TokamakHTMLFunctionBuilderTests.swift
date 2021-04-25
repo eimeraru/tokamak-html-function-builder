@@ -2,14 +2,22 @@ import XCTest
 @testable import TokamakHTMLFunctionBuilder
 
 final class TokamakHTMLFunctionBuilderTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(TokamakHTMLFunctionBuilder().text, "Hello, World!")
+    func testStaticTextHTML() {
+        XCTAssertEqual("\(html("div", content: "hello"))", """
+            HTML<String>(tag: "div", attributes: [:], content: "hello", innerHTML: Optional("hello"))
+            """
+            )
+    }
+    
+    func testDynamicTextHTML() {
+        XCTAssertEqual("\(html("div", listeners: ["click" : { _ in }], content: "hello"))", """
+            DynamicHTML<String>(tag: "div", attributes: [:], listeners: ["click": (Function)], content: "hello", innerHTML: Optional("hello"))
+            """
+            )
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testStaticTextHTML", testStaticTextHTML),
+        ("testDynamicTextHTML", testDynamicTextHTML),
     ]
 }
