@@ -1,3 +1,10 @@
+//
+//  TokamakHTMLFunctionBuilderTests.swift
+//  TokamakHTMLFunctionBuilder
+//
+//  Created by evdwarf on 2021/04/26.
+//
+
 import XCTest
 @testable import TokamakHTMLFunctionBuilder
 
@@ -10,7 +17,7 @@ final class TokamakHTMLFunctionBuilderTests: XCTestCase {
     }
     
     func testDynamicTextHTML() {
-        XCTAssertEqual("\(html("div", listeners: ["click" : { _ in }], content: "hello"))", """
+        XCTAssertEqual("\(html("div", listeners: [.click : { _ in }], content: "hello"))", """
             DynamicHTML<String>(tag: "div", attributes: [:], listeners: ["click": (Function)], content: "hello", innerHTML: Optional("hello"))
             """
             )
