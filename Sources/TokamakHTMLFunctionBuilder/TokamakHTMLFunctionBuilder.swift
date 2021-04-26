@@ -44,13 +44,13 @@ public typealias Listener = (JSObject) -> ()
 public func html<Content: View>(
     _ tag: String,
     attributes: [HTMLAttribute : String] = [:],
-    listeners: [String : Listener],
+    listeners: [GlobalEventHandler : Listener],
     content: Content) -> some View
 {
     DynamicHTML(tag,
                 attributes,
                 listeners: listeners.reduce(into: Dictionary<String, Listener>(), { (ret, dict) in
-                    ret[dict.key.description] = dict.value
+                    ret[dict.key.rawValue] = dict.value
                 }),
                 content: {
                     content
