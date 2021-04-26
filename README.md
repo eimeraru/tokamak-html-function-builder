@@ -7,5 +7,5 @@ A Simplify Tokamak HTML function builder
 ```swift
 html("div", ["class" : "hello"]) {
     html("span", ["class" : "world"], content: "Hello, World!")
-} // => <div><span>Hello, World!</span></div>
+} // => <div class="hello"><span class="world">Hello, World!</span></div>
 ```
