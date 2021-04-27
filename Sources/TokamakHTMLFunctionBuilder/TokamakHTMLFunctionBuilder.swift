@@ -39,7 +39,7 @@ public func html<Content: View>(
     }
 }
 
-public func html<Content: View>(
+public func html(
     _ tag: String,
     attributes: [HTMLAttribute : String] = [:]) -> some View
 {
@@ -96,7 +96,7 @@ public func html<Content: View>(
                 })
 }
 
-public func html<Content: View>(
+public func html(
     _ tag: String,
     listeners: [GlobalEventHandler : Listener],
     attributes: [HTMLAttribute : String] = [:]) -> some View
