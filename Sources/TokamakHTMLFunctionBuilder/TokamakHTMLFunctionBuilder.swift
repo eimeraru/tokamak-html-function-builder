@@ -39,6 +39,15 @@ public func html<Content: View>(
     }
 }
 
+public func html<Content: View>(
+    _ tag: String,
+    attributes: [HTMLAttribute : String] = [:]) -> some View
+{
+    HTML(tag, attributes) {
+        EmptyView()
+    }
+}
+
 public typealias Listener = (JSObject) -> ()
 
 public func html<Content: View>(
@@ -84,5 +93,20 @@ public func html<Content: View>(
                 }),
                 content: {
                     content()
+                })
+}
+
+public func html<Content: View>(
+    _ tag: String,
+    listeners: [GlobalEventHandler : Listener],
+    attributes: [HTMLAttribute : String] = [:]) -> some View
+{
+    DynamicHTML(tag,
+                attributes,
+                listeners: listeners.reduce(into: Dictionary<String, Listener>(), { (ret, dict) in
+                    ret[dict.key.rawValue] = dict.value
+                }),
+                content: {
+                    EmptyView()
                 })
 }
