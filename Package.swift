@@ -13,7 +13,9 @@ let package = Package(
             targets: ["TokamakHTMLFunctionBuilder"]),
     ],
     dependencies: [
-        .package(name: "Tokamak", url: "https://github.com/TokamakUI/Tokamak", from: "0.6.1"),
+        .package(name: "Tokamak", 
+                 url: "https://github.com/TokamakUI/Tokamak", 
+                 Version(0,6,1) ..< Version(0,7,0)),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
